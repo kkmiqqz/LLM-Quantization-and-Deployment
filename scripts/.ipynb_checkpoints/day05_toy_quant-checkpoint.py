@@ -20,12 +20,16 @@ def symmetric_quantize(w):
     print(f"反量化后的浮点数组: {dequant_w}")
     
     # 4. 计算误差
-    mae = np.mean(np.abs(w - dequant_w))
-    mse = np.mean((w - dequant_w) ** 2)
-    print(f"最大绝对误差 (MAE): {mae:.6f}")
+    errors = np.abs(w - dequant_w)
+    mean_abs_error = np.mean(errors)
+    max_abs_error = np.max(errors)
+    mse = np.mean(errors ** 2)
+    
+    print(f"平均绝对误差 (Mean Absolute Error): {mean_abs_error:.6f}")
+    print(f"最大绝对误差 (Max Absolute Error): {max_abs_error:.6f}")
     print(f"均方误差 (MSE): {mse:.6f}")
     
-    return mae
+    return mean_abs_error
 
 # 测试数据 1：正常的数组
 normal_w = np.array([-1.0, -0.4, 0, 0.3, 0.9], dtype=np.float32)
