@@ -1,0 +1,14 @@
+root@jupyter-991ktpkw0grbe3fp:~/rivermind-fs# python scripts/day03_memory.py
+✅ 模型权重加载完毕，纯权重显存占用: 3393.29 MB
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+序列长度  128 | 缓存占用:  85.85 MB | 前向峰值: 124.22 MB
+序列长度  512 | 缓存占用: 318.91 MB | 前向峰值: 469.03 MB
+序列长度 1024 | 缓存占用: 630.16 MB | 前向峰值: 930.91 MB
+序列长度 2048 | 缓存占用: 1252.16 MB | 前向峰值: 1852.16 MB
+root@jupyter-991ktpkw0grbe3fp:~/rivermind-fs# python scripts/day03_kv_memory.py
+✅ 纯权重显存: 3393.29 MB
+We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+序列长度  128 | 纯 KV Cache 占用:  11.66 MB
+序列长度  512 | 纯 KV Cache 占用:  22.16 MB
+序列长度 1024 | 纯 KV Cache 占用:  36.16 MB
+序列长度 2048 | 纯 KV Cache 占用:  64.16 MB

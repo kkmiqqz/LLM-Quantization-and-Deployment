@@ -1,0 +1,62 @@
+[环境信息]
+- 硬件平台: NVIDIA RTX 3090 (24GB)
+- CUDA 版本: 11.8.89
+- llama.cpp commit: f477f79
+
+[模型文件信息]
+- 原始 HuggingFace 权重类型: BF16 (约 3.1 GB)
+- 导出 FP16 GGUF 文件大小: 2.9 GB
+- 转换脚本日志: total_size = 3.1G, n_tensors = 338
+
+[100%] Building CXX object app/CMakeFiles/llama-app.dir/llama.cpp.o
+[100%] Building CXX object app/CMakeFiles/llama-app.dir/download.cpp.o
+[100%] Linking CXX executable ../../bin/llama-cli
+[100%] Built target llama-cli
+[100%] Building CXX object app/CMakeFiles/llama-app.dir/__/license.cpp.o
+[100%] Linking CXX executable ../bin/llama
+[100%] Built target llama-app
+[100%] Linking CXX executable ../bin/test-chat
+[100%] Built target test-chat
+root@jupyter-obgp0deny6rapmf4:~/rivermind-fs/llama.cpp# cd /root/rivermind-fs
+./llama.cpp/build/bin/llama-cli -m models/qwen-f16.gguf -p "只回答：部署测试成功" -n 20 -ngl 99
+
+
+Loading model...  
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b1-f477f79
+model      : models/qwen-f16.gguf
+ftype      : F16
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+
+
+
+> 只回答：部署测试成功
+部署测试成功。
+
+[ Prompt: 475.5 t/s | Generation: 123.2 t/s ]
+
+> 
+
+[C++ 原生推理压测]
+- 测试命令: ./llama.cpp/build/bin/llama-cli -m models/qwen-f16.gguf -p "只回答：部署测试成功" -n 20 -ngl 99
+- 执行结果: 部署测试成功。
+- 性能数据: Prompt: 475.5 t/s | Generation: 123.2 t/s
+
+[编译与运行踩坑记录]
+1. 依赖冲突: numpy 2.x 与 torch 2.2.2 冲突，导致转换报错。解决方案：pip install "numpy<2"。
+2. 编译报错: 服务器 NCCL 版本较旧，llama.cpp 最新版 CUDA 代码找不到 maxCTAs 属性。解决方案：cmake 配置时添加 -DGGML_CUDA_NCCL=OFF 禁用多卡通信编译。

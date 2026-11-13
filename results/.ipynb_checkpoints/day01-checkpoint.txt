@@ -1,0 +1,22 @@
+root@jupyter-991ktpkw0grbe3fp:~/rivermind-fs# python scripts/day01_hf.py
+⏳ 正在加载 Tokenizer 和 Model 到 GPU...
+✅ 模型加载成功！当前使用的设备: cuda:0
+
+--- 验证数据 ---
+input_ids 形状: torch.Size([1, 36])
+前 10 个 token ID: [151644, 8948, 198, 2610, 525, 1207, 16948, 11, 3465, 553]
+模型数据类型 (dtype): torch.float16
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:567: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.7` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:572: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.8` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:589: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+
+--- 模型输出 ---
+端侧推理是指在设备本地进行模型的计算和处理，无需将数据传输到云端。
+
+⏱️ 生成 32 个 token 耗时: 1.38 秒
+
+--- 张量字节计算 ---
+手算字节数: 12, 代码计算字节数: 12
