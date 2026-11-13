@@ -60,7 +60,7 @@ Attention(Q, K, V) = Softmax\left(\frac{QK^T}{\sqrt{d_k}}\right) \cdot V
 
 ---
 
-## 四、 面试高频考点（大厂真题）
+## 四、重点问题
 
 在端侧部署和模型压缩岗位面试中，以下问题出现频率极高：
 
