@@ -64,4 +64,4 @@
 ---
 > **代码入口**：
 > - 模型转换脚本：[convert_hf_to_gguf.py](../llama.cpp/convert_hf_to_gguf.py)
-> - 推理测试命令见 [results/day06_gguf_test.txt](../results/day07_gguf_test.txt)
+> - 推理测试命令见 [results/day06_gguf_test.txt](../results/day06_gguf_test.txt)
