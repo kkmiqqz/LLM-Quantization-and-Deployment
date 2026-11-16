@@ -88,6 +88,6 @@ python scripts/plot_bench_deep.py
 
 ---
 > **代码与结果入口**：
-> - 基础柱状图代码：[day08_plot_bench.py](../scripts/plot_bench.py) | 原始数据：[3090_bench.json](../results/3090_bench.json)
+> - 基础柱状图代码：[day08_plot_bench.py](../scripts/day08_plot_bench.py) | 原始数据：[3090_bench.json](../results/3090_bench.json)
 > - 深度折线图代码：[plot_bench_deep.py](../scripts/plot_bench_deep.py) | 原始数据：[3090_bench_deep.json](../results/3090_bench_deep.json)
 > - 结果图片：[bench_3090_bar.png](../results/bench_3090_bar.png) | [bench_prefill_curve.png](../results/bench_prefill_curve.png)
