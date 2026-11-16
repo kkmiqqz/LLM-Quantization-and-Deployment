@@ -1,0 +1,112 @@
+[运行环境]
+- 硬件平台: NVIDIA RTX 3090 (24GB)
+- 引擎版本: llama.cpp (commit f477f79)
+- 测试命令: ./llama.cpp/build/bin/llama-cli -m [模型路径] -p "用一句话解释端侧推理" -n 32 -ngl 99
+
+root@jupyter-din2kcv45y0gekhb:~/rivermind-fs# ./llama.cpp/build/bin/llama-cli -m models/qwen-q4.gguf -p "用一句话解释端侧推理" -n 32 -ngl 99
+
+量化基准数据对比结果：
+Loading model...  
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b1-f477f79
+model      : models/qwen-q4.gguf
+ftype      : Q4_K - Medium
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+
+
+
+> 用一句话解释端侧推理
+端侧推理是指在设备或终端上进行的机器学习模型运行，无需将数据传输到云端。
+
+[ Prompt: 1009.3 t/s | Generation: 185.7 t/s ]
+
+> /exit
+
+
+Exiting...
+root@jupyter-din2kcv45y0gekhb:~/rivermind-fs# ls -lh models/*.gguf
+-rw-r--r-- 1 root root 2.9G Nov 13 08:58 models/qwen-f16.gguf
+-rw-r--r-- 1 root root 941M Nov 16 03:11 models/qwen-q4.gguf
+-rw-r--r-- 1 root root 1.6G Nov 16 03:06 models/qwen-q8.gguf
+root@jupyter-din2kcv45y0gekhb:~/rivermind-fs# ./llama.cpp/build/bin/llama-cli -m models/qwen-q8.gguf -p "用一句话解释端侧推理" -n 32 -ngl 99
+
+
+Loading model...  
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b1-f477f79
+model      : models/qwen-q8.gguf
+ftype      : Q8_0
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+
+
+
+> 用一句话解释端侧推理
+端侧推理是指在设备或终端上进行的模型推理，以实现快速响应和低功耗。
+
+[ Prompt: 1716.4 t/s | Generation: 199.6 t/s ]
+
+> /exit
+
+
+Exiting...
+root@jupyter-din2kcv45y0gekhb:~/rivermind-fs# ./llama.cpp/build/bin/llama-cli -m models/qwen-f16.gguf -p "用一句话解释端侧推理" -n 32 -ngl 99
+
+
+Loading model...  
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b1-f477f79
+model      : models/qwen-f16.gguf
+ftype      : F16
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+
+
+
+> 用一句话解释端侧推理
+端侧推理是指在设备或终端上进行的模型推理，而不是云计算。
+
+[ Prompt: 475.5 t/s | Generation: 123.2 t/s ]
