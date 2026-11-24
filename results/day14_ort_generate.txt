@@ -1,0 +1,31 @@
+root@jupyter-bgdltpjv9zwvkam0:~/rivermind-fs# python3 scripts/day14_ort_generate.py
+⏳ 加载 ORT 模型: /root/rivermind-data/models/qwen-ort-cuda
+✅ 设备: CUDA | 架构: qwen2
+
+--- 生成中 ---
+
+--- 模型输出 ---
+端侧推理是指在设备本地进行的推理任务，无需将数据传输到云端。
+
+⏱️ 生成 20 个 token 耗时: 0.17 秒
+🔥 速度: 116.17 tokens/s
+
+root@jupyter-bgdltpjv9zwvkam0:~/rivermind-fs# python3 scripts/hf_generate.py --model_dir /root/rivermind-data/models/qwen-hf --prompt "用一句话解释端侧推理" --max_new_tokens 32
+⏳ 正在加载模型: /root/rivermind-data/models/qwen-hf...
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+✅ 模型加载耗时: 3.40 秒
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.7` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.8` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/opt/conda/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `20` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+
+========================================
+Prompt: 用一句话解释端侧推理
+输出: 端侧推理是指在设备本地进行的模型推理，无需将数据传输到云端。
+----------------------------------------
+生成长度: 20 tokens
+生成耗时: 1.29 秒
+生成速度: 15.51 tokens/s
+========================================
