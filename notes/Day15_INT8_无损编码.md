@@ -95,7 +95,7 @@ $$
 沿用已能正常读取 GGUF 的环境，没有为本次测试重新升级依赖。
 
 ```bash
-cd /root/qwen-codec
+cd /root/rivermind-fs/scripts
 MODEL="/root/rivermind-data/models/qwen-q8.gguf"
 
 # 检查张量类型
@@ -198,16 +198,15 @@ Q8_0 按局部块尺度归一化整数。[1] 因此，浮点权重集中在零�
 
 完整代码保存在以下两个脚本中，不在笔记中重复粘贴。服务器工作目录为 `/root/qwen-codec/`；相对链接按本笔记放在其 `notes/` 子目录、脚本与 CSV 保留在工作目录组织。
 
-| 文件引用 | 用途／对应实验 | 本次服务器绝对路径 |
-| --- | --- | --- |
-| [q8_codec_probe.py](../q8_codec_probe.py) | GGUF 检查、定长索引成本分析；含未在真实模型上验收的编码回解原型 | `/root/qwen-codec/q8_codec_probe.py` |
-| [q8_huffman_probe.py](../q8_huffman_probe.py) | Huffman 码长、分块填充和元数据成本估算；全量报告同时比较定长候选 | `/root/qwen-codec/q8_huffman_probe.py` |
-| [q8_report.csv](../q8_report.csv) | 首块 7 张量的定长方案统计，见 4.1；原始记录保存在服务器 | `/root/qwen-codec/q8_report.csv` |
-| [q8_huffman_report.csv](../q8_huffman_report.csv) | 首块 7 张量、连续 Huffman 码流，见 4.2 | `/root/qwen-codec/q8_huffman_report.csv` |
-| [q8_huffman_4096.csv](../q8_huffman_4096.csv) | 首块 7 张量、4096 分块，见 4.2～4.3 | `/root/qwen-codec/q8_huffman_4096.csv` |
-| [q8_huffman_all_4096.csv](../q8_huffman_all_4096.csv) | 全部 197 张量、4096 分块，见 4.1～4.4；整体结论的主要依据 | `/root/qwen-codec/q8_huffman_all_4096.csv` |
+| 文件引用 | 用途／对应实验 |
+| --- | --- |
+| [q8_codec_probe.py](../scripts/q8_codec_probe.py) | GGUF 检查、定长索引成本分析 |
+| [q8_huffman_probe.py](../scripts/q8_huffman_probe.py) | Huffman 码长、分块填充和元数据成本估算 |
+| [q8_report.csv](../results/q8_report.csv) | 首块 7 张量的定长方案统计 |
+| [q8_huffman_report.csv](../results/q8_huffman_report.csv) | 首块 7 张量、连续 Huffman 码流 |
+| [q8_huffman_4096.csv](../results/q8_huffman_4096.csv) | 首块 7 张量、4096 分块 |
+| [q8_huffman_all_4096.csv](../results/q8_huffman_all_4096.csv) | 全部 197 张量、4096 分块 |
 
-原模型路径为 `/root/rivermind-data/models/qwen-q8.gguf`。三个 Huffman CSV 已提供并核对；`q8_report.csv` 的首块结果来自终端记录，未作为附件上传。笔记中的汇总采用张量实际字节数加权，脚本生成的 CSV 是复核各层数据和开销口径的入口。
 
 ## 参考资料
 
